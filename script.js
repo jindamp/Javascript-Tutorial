@@ -1,41 +1,63 @@
-var x = 30;
+// 'use strict';
+
+var promise = new Promise((resolve,reject)=>{
+	setTimeout(()=>{
+		reject();
+	}, 10000)
+});
+
+promise.then(()=>{
+	console.log("resolve method called");
+}).catch(()=>{
+	console.log("reject method called");
+});
 
 
-if(x<20){
-    console.log("x is less than 20");
-}else {
-    console.log("x is greater than 20");
+var getUserDetailsPromise = new Promise((resolve,reject)=>{
+	// send api request
+	setTimeout(()=>{
+		resolve("test");
+	},10000)
+})
+
+
+function onbuttonClick(){
+	getUserDetailsPromise.then((data)=>{
+		console.log(data);
+	});
 }
 
 
-console.log("============================");
-console.log("         For Loop         ");
-console.log("============================");
-
-var position = "top1";
-switch(position){
-	case "top":
-		console.log("Top");
-	    break;
-    default:
-        console.log("default")
-}
+//  Calling external api from javascript
 
 
-for( var x=0; x < 10;  x++){
-	console.log( x );
-}
+var httpPromise = new Promise(function(resolve,reject){
+	
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			var response = this.responseText;
+			resolve(response);
+		}
+	};
+	xmlhttp.open("GET", "https://hub.dummyapis.com/delay?seconds=5", true);
+	xmlhttp.send();
+
+});
+
+httpPromise.then((response1)=>{
+	console.log(response1);
+})
+
+console.log("last line");
 
 
-console.log("============================");
-console.log("         While Loop         ");
-console.log("============================");
+// ===============================================
+// 				Hoisting
+// ===============================================
 
-var wx = 0;
-while( wx < 5)
-{
-	console.log(wx);
-	wx++;
-}
+let x = 4;
+x = 5; // Assign 5 to x
+console.log(x); // Display x in the element
 
 
