@@ -1,63 +1,35 @@
-// 'use strict';
+// GET ELEMENT BY ID
+var firstNameEle = document.getElementById("firstName");
+firstNameEle.innerText = "Nikhith";
+console.log(firstNameEle);
 
-var promise = new Promise((resolve,reject)=>{
-	setTimeout(()=>{
-		reject();
-	}, 10000)
-});
+// GET ELEMENT BY CLASS
+var valuesList = document.getElementsByClassName("value");
+valuesList[1].innerHTML = "<u> Konduru </u>";
 
-promise.then(()=>{
-	console.log("resolve method called");
-}).catch(()=>{
-	console.log("reject method called");
-});
+// GET ELEMENT BY TAG-NAME
+var tagsList = document.getElementsByTagName("span");
+console.log("Tags Length: "+tagsList.length);
+tagsList[2].innerHTML = "<b> nikhith@yopmail.com </b>";
 
+//  Manipulating attributes
+var ele1 = document.getElementById("firstName");
+ele1.setAttribute("class","pavan");
+var ele2 = document.getElementById("firstName");
+ele2.setAttribute("test","sample");
+var ele3 = document.getElementById("firstName");
+ele3.style.color = "blue";
 
-var getUserDetailsPromise = new Promise((resolve,reject)=>{
-	// send api request
-	setTimeout(()=>{
-		resolve("test");
-	},10000)
-})
+//  Local storage
+localStorage.setItem("lastName","jindam");
+var lastname = localStorage.getItem("lastName");
+console.log("from local storage: "+lastname);
+//  Session Storage
+sessionStorage.setItem("firstName","pavan");
+var firstName = sessionStorage.getItem("firstName");
+console.log("from session storage:"+firstName);
 
-
-function onbuttonClick(){
-	getUserDetailsPromise.then((data)=>{
-		console.log(data);
-	});
-}
-
-
-//  Calling external api from javascript
-
-
-var httpPromise = new Promise(function(resolve,reject){
-	
-	var xmlhttp = new XMLHttpRequest();
-	xmlhttp.onreadystatechange = function() {
-		if (this.readyState == 4 && this.status == 200) {
-			var response = this.responseText;
-			resolve(response);
-		}
-	};
-	xmlhttp.open("GET", "https://hub.dummyapis.com/delay?seconds=5", true);
-	xmlhttp.send();
-
-});
-
-httpPromise.then((response1)=>{
-	console.log(response1);
-})
-
-console.log("last line");
-
-
-// ===============================================
-// 				Hoisting
-// ===============================================
-
-let x = 4;
-x = 5; // Assign 5 to x
-console.log(x); // Display x in the element
-
-
+// cookie
+document.cookie = "lastname=jindam; expires=Wed, 28 Apr 2021 18:00:00 UTC";
+var cookies = document.cookie;
+console.log("from cookies:"+cookies);
