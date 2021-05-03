@@ -1,35 +1,45 @@
-// GET ELEMENT BY ID
-var firstNameEle = document.getElementById("firstName");
-firstNameEle.innerText = "Nikhith";
-console.log(firstNameEle);
+//  self Executing function
+(
+    function() {
+        console.log("self executing function");
+    }
+)();
 
-// GET ELEMENT BY CLASS
-var valuesList = document.getElementsByClassName("value");
-valuesList[1].innerHTML = "<u> Konduru </u>";
 
-// GET ELEMENT BY TAG-NAME
-var tagsList = document.getElementsByTagName("span");
-console.log("Tags Length: "+tagsList.length);
-tagsList[2].innerHTML = "<b> nikhith@yopmail.com </b>";
 
-//  Manipulating attributes
-var ele1 = document.getElementById("firstName");
-ele1.setAttribute("class","pavan");
-var ele2 = document.getElementById("firstName");
-ele2.setAttribute("test","sample");
-var ele3 = document.getElementById("firstName");
-ele3.style.color = "blue";
+var str = "Hi! i am pavan";
 
-//  Local storage
-localStorage.setItem("lastName","jindam");
-var lastname = localStorage.getItem("lastName");
-console.log("from local storage: "+lastname);
-//  Session Storage
-sessionStorage.setItem("firstName","pavan");
-var firstName = sessionStorage.getItem("firstName");
-console.log("from session storage:"+firstName);
+(
+    function(val) {
+        console.log(val);
+    }
+)(str);
 
-// cookie
-document.cookie = "lastname=jindam; expires=Wed, 28 Apr 2021 18:00:00 UTC";
-var cookies = document.cookie;
-console.log("from cookies:"+cookies);
+
+
+// ==============================================
+
+// document.getElementById("two").style.display = "none";
+// $("#two").hide();
+
+// var arr = document.getElementsByClassName("one");
+// for (let i = 0; i < arr.length; i++) {
+//     const element = arr[i];
+//     element.style.display = "none";    
+// }
+
+// $(".one").hide();
+
+$(".one button").click((e)=>{
+    // console.log(e.target.getAttribute("jp"));
+    console.log($(e.target).attr('jp'));
+});
+
+
+$.get("https://hub.dummyapis.com/employee?noofRecords=10&idStarts=1", function(data, status){
+
+        if(status==="success"){
+            console.log(data);
+        }
+    
+  });
