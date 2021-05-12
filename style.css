@@ -1,0 +1,38 @@
+body {
+  background-color: #b9b5b5;
+}
+
+.container {
+  margin: -8px;
+  height: 100vh;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.panel {
+  margin: 100px 0px;
+  min-width: 600px;
+}
+
+.enterTodoInput {
+  width: 100%;
+}
+
+input {
+  padding: 12px 24px;
+}
+
+.todo-items {
+  margin-top: 32px;
+  background-color: white;
+  padding: 24px 12px;
+}
+
+.todo-item {
+  padding: 12px;
+}
+
+.todo-item .checked {
+  color: gray;
+}
