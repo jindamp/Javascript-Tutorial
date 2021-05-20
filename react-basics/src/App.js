@@ -1,60 +1,42 @@
 import { useState } from 'react';
 import './App.css';
+import AddresssBox from './components/addressBox';
 import LoadingButton from './components/loadingButton';
+import ContactForm from './components/contactForm';
 
 function App() {
   
   const [count,setCount] = useState(0);
   const [value,setValue] = useState("");
 
+  const [localAddress,setLocalAddresss] = useState({
+    city: "Hyderabad",
+    state:"Telangana",
+    pincode:"500090"
+  })
+
 
   function handleBtnClick(event){
+    setLocalAddresss({
+      city:"Austin",
+      state:"US",
+      pincode:"100923"
+    })
     
-    // count++;
-    // count = count + 1;
-    var num = count + 1;
-    setCount(num);
-
-    if( num % 2 === 0){
-      setValue("Even");
-    }else{
-      setValue("Odd");
-    }
-
-    console.log(count);
   }
 
   return (
     <div className="App">
       <h3>Welcome to react basics tutorial</h3>
-      <div>
-        
-        <div style={{fontSize:24}}> {count} </div>
-        <div style={{fontSize:20}}> {value} </div>
-        
-        <button onClick={ (e)=> handleBtnClick(e)}>Click Me</button>
+      <button onClick={handleBtnClick}>Change Addresss</button>
 
-        {/* <button onClick={ handleBtnClick }>Click Me</button> */}
+      <AddresssBox setAddress={setLocalAddresss} address={localAddress}/>  
+      <br/>
+      <br/>
+      <br/>
+      <br/>
 
-      </div>
-      
-
-      {
-        value === "Odd" ?
-          <>
-            <LoadingButton text="one" type="danger" />
-            <LoadingButton  text="three" type="primary"/>
-          </> : 
-          <>
-            <LoadingButton text="two" type="warning"/>      
-            <LoadingButton  text="four"/>
-          </>
-
-      }
-
-
-      
-      
+      <ContactForm/>
 
     </div>
   );
